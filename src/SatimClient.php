@@ -21,7 +21,7 @@ class SatimClient
         $this->httpClient = new SatimHttpClient(testMode: $testMode);
     }
 
-    public function createOrder(SatimOrderBuilder $builder): SatimRegisterOrderResponse
+    public function registerOrder(SatimOrderBuilder $builder): SatimRegisterOrderResponse
     {
         $builderData = $builder->generateOrderDetails();
         $builderData['userDefinedFields']['force_terminal_id'] = $this->terminalId;
@@ -65,7 +65,7 @@ class SatimClient
         ]);
     }
 
-    public static function makeOrder() : SatimOrderBuilder
+    public function initNewOrder() : SatimOrderBuilder
     {
         return new SatimOrderBuilder();
     }
