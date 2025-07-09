@@ -1,6 +1,6 @@
 <?php
 
-namespace Aljeerz\PhpSatim;
+namespace Aljeerz\PhpSatim\Support;
 
 use Aljeerz\PhpSatim\Exceptions\SatimException;
 use Aljeerz\PhpSatim\Support\Enums\SatimCurrency;

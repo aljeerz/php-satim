@@ -2,10 +2,11 @@
 
 namespace Aljeerz\PhpSatim;
 
+use Aljeerz\PhpSatim\Support\Enums\SatimLanguage;
 use Aljeerz\PhpSatim\Support\Http\Responses\SatimConfirmOrderResponse;
 use Aljeerz\PhpSatim\Support\Http\Responses\SatimRegisterOrderResponse;
 use Aljeerz\PhpSatim\Support\Http\SatimHttpClient;
-use Aljeerz\PhpSatim\Support\Enums\SatimLanguage;
+use Aljeerz\PhpSatim\Support\SatimOrderBuilder;
 
 class SatimClient
 {
