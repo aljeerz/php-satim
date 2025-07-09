@@ -1,0 +1,23 @@
+{
+  "name": "aljeerz/php-satim",
+  "description": "PHP Library to Interact with Satim.dz CIB Payment Gateway",
+  "authors": [
+    {
+      "name": "Abdelmounaim Bouakouk",
+      "email": "abdelmounaim@bouakouk.com",
+      "homepage": "https://abdelmounaim.bouakouk.com",
+      "role": "Developer"
+    }
+  ],
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Aljeerz\\PhpSatim\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "guzzlehttp/guzzle": "^7.0"
+  }
+}
