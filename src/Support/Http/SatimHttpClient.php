@@ -60,7 +60,17 @@ class SatimHttpClient
         $response = new SatimConfirmOrderResponse($responseData);
 
         if (!$response->isSuccessful()) {
-            throw new SatimApiException($response->errorMessage, $response->errorCode);
+            $exception = new SatimApiException(
+                $response->errorMessage,
+                $response->errorCode,
+            );
+            if($response->actionCode){
+                $exception = $exception->withActionCode(
+                    $response->actionCode,
+                    $response->actionCodeDescription ?? ''
+                );
+            }
+            throw $exception;
         }
 
         return $response;
