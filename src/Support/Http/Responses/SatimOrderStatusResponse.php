@@ -85,6 +85,6 @@ readonly class SatimOrderStatusResponse extends SatimCoreResponse
     }
     protected function isErrored(): bool
     {
-        return $this->errorCode !== '0';
+        return $this->errorCode !== '0' && $this->errorCode !== 2;
     }
 }
