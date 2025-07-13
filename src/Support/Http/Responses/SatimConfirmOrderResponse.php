@@ -75,7 +75,14 @@ readonly class SatimConfirmOrderResponse extends SatimCoreResponse
                     $this->params = [];
                 }
             } else {
-                throw new SatimApiException($this->errorMessage, (int)$this->errorCode);
+                $exception = new SatimApiException($this->errorMessage, (int)$this->errorCode);
+                if ($payload["actionCode"] ?? null) {
+                    $exception = $exception->withActionCode(
+                        $payload["actionCode"],
+                        $payload["actionCodeDescription"] ?? '',
+                    );
+                }
+                throw $exception;
             }
 
         } catch (\Throwable $th) {
