@@ -82,6 +82,19 @@ readonly class SatimConfirmOrderResponse extends SatimCoreResponse
                         $payload["actionCodeDescription"] ?? '',
                     );
                 }
+
+                if($payload["params"]["respCode"] ?? null) {
+                    $exception = $exception->withJsonRespCode(
+                        $payload["params"]["respCode"],
+                        $payload["params"]["respCode_desc"] ?? '',
+                    );
+                }
+
+                if($payload['OrderStatus'] ?? null) {
+                    $exception = $exception->withOrderStatus(
+                        SatimOrderStatus::fromOrderStatusCode($payload['OrderStatus']),
+                    );
+                }
                 throw $exception;
             }
 

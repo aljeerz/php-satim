@@ -65,10 +65,17 @@ class SatimHttpClient
                 $response->errorCode,
             );
 
-            if($response->actionCode){
+            if ($response->actionCode) {
                 $exception = $exception->withActionCode(
                     $response->actionCode,
                     $response->actionCodeDescription ?? ''
+                );
+            }
+
+            if ($response->params['respCode'] ?? null) {
+                $exception = $exception->withJsonRespCode(
+                    $response->params['respCode'],
+                    $response->params['respCode_desc'] ?? ''
                 );
             }
             throw $exception;

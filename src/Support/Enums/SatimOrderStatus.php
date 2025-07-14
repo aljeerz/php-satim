@@ -11,6 +11,7 @@ enum SatimOrderStatus: string
     case Cancelled = 'cancelled';
     case Failed = 'failed';
     case Declined = 'declined';
+    case Rejected = 'rejected';
 
     public static function fromOrderStatusCode(string|int $code): self
     {
@@ -21,6 +22,8 @@ enum SatimOrderStatus: string
             return self::PartiallyPaid;
         } elseif ($code == 2) {
             return self::Paid;
+        } elseif ($code == 3) {
+            return self::Rejected;
         } else if ($code == 4) {
             return self::Refunded;
         } else if ($code == 5) {
