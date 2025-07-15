@@ -37,16 +37,17 @@ class SatimClient
         return $this->httpClient->registerOrderQuery($data);
     }
 
-    public function getOrderStatus(string $orderId)
+    public function getOrderStatus(string $orderId, SatimLanguage $satimLanguage = SatimLanguage::EN)
     {
         return $this->httpClient->getOrderStatusQuery([
             'userName' => $this->username,
             'password' => $this->password,
             'orderId' => $orderId,
+            'language' => $satimLanguage->value,
         ]);
     }
 
-    public function confirmOrder(string $orderId, SatimLanguage $satimLanguage): SatimConfirmOrderResponse
+    public function confirmOrder(string $orderId, SatimLanguage $satimLanguage = SatimLanguage::EN): SatimConfirmOrderResponse
     {
         return $this->httpClient->confirmOrderQuery([
             'userName' => $this->username,
@@ -66,7 +67,7 @@ class SatimClient
         ]);
     }
 
-    public function initNewOrder() : SatimOrderBuilder
+    public function initNewOrder(): SatimOrderBuilder
     {
         return new SatimOrderBuilder();
     }
